@@ -1,28 +1,55 @@
 form {
     border: 1px solid #000;
     width: 80vw;
-    height: 60vh;
     padding: 1rem;
     margin: 5rem auto;
     border-radius: 5px;
 }
 
-label, input {
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+label, input, select {
     font-size: 1.4rem;
 }
 
-input {
+input, select {
      padding: .5rem;
      margin: 1rem 0;
 }
 
 .loginInfo {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     align-items: flex-start;
 }
 
-.loginInfo input {
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.name {
+    width: 70%;
+}
+
+.age {
+    width: 20%;
+}
+
+.civil {
+    width: 30%;
+}
+
+.cpf {
+    width: 50%;
+}
+
+.loginInfo input, .loginInfo select {
     width: 90%;
     border: 1px solid #000;
     border-radius: 5px;
@@ -33,4 +60,41 @@ input {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+}
+
+#cadButton {
+    align-self: center;
+}
+
+@media (max-width: 600px) {
+    .name {
+        width: 100%;
+    }
+
+    .age {
+        width: 30%;
+    }
+
+    .civil {
+        width: 60%;
+        margin-left: 1rem;
+    }
+
+    .cpf {
+        width: 70%;
+    }
+}
+
+@media (min-width: 601px) {
+    form {
+        width: 500px;
+    }
+
+    .civil {
+        width: 40%;
+    }
+
+    .cpf {
+        width: 60%;
+    }
 }
