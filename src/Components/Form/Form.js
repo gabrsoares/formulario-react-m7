@@ -19,14 +19,14 @@ class Form extends React.Component {
     }
 
     changeField(field, value) {
-        this.setState({[field]: value});
+        this.setState({[field]: value}); //evita a criação de diversas funções para mudar o estado dos campos do formulário
     }
 
     handleSubmit = (event) => {
         event.preventDefault()
         const newState = {isSubmitted: true}
-        if(this.state.nome.length !== 0 && this.state.idade.length !== 0 && this.state.cpf.length !==  0 && this.state.civil.length !== 0 && this.state.genero.length !== 0) {
-            newState.validateEmpty = {isEmpty: false}
+        if(this.state.nome.length !== 0 && this.state.idade.length !== 0 && this.state.cpf.length !==  0 && this.state.civil.length !== 0 && this.state.genero.length !== 0) { //checa se tudo foi preenchido
+            newState.validateEmpty = {isEmpty: false} //atribuimos o valor do objeto no newState para evitar o uso repetido do useState em uma unica função
         }
         this.setState(newState)
         console.log("isEmpty:",this.state.validateEmpty.isEmpty)
