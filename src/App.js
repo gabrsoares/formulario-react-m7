@@ -13,17 +13,25 @@ class App extends React.Component {
       civil: '',
       genero: '',
       isSubmitted: false,
-      validateEmpty: {
-        isEmpty: true
-      }
+      isEmpty: true
     }
-
-    
   }
+  handleChange = (setChange) => {
+    this.setState({
+      nome: setChange.nome,
+      idade:setChange.idade,
+      cpf: setChange.cpf,
+      civil: setChange.civil,
+      genero: setChange.genero,
+      isSubmitted: setChange.isSubmitted,
+      isEmpty: setChange.isEmpty
+    })
+  }
+  
   render(){
     return (
       <div className="App">
-        <Form />
+        <Form handleChange={this.handleChange} />
       </div>
     );
   }

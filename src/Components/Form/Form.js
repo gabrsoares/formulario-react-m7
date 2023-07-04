@@ -2,36 +2,32 @@ import React from 'react'
 import './Form.css'
 
 class Form extends React.Component {
-    constructor(props){
-        super(props);
+    changeField = (field, value) => {
+        const { handleChange } = this.props
+        const setChange = { //evita a criação de diversas funções para mudar o estado dos campos do formulário
+            [field]: value
+        }; 
 
-        this.state = {
-            nome: '',
-            idade:'',
-            cpf: '',
-            civil: '',
-            genero: '',
-            isSubmitted: false,
-            validateEmpty: {
-                isEmpty: true
-            }
-        }
-    }
-
-    changeField(field, value) {
-        this.setState({[field]: value}); //evita a criação de diversas funções para mudar o estado dos campos do formulário
+        handleChange(setChange)
+        console.log(this.props)
     }
 
     handleSubmit = (event) => {
         event.preventDefault()
-        const newState = {isSubmitted: true}
-        if(this.state.nome.length !== 0 && this.state.idade.length !== 0 && this.state.cpf.length !==  0 && this.state.civil.length !== 0 && this.state.genero.length !== 0) { //checa se tudo foi preenchido
-            newState.validateEmpty = {isEmpty: false} //atribuimos o valor do objeto no newState para evitar o uso repetido do useState em uma unica função
-        }
-        this.setState(newState)
-        console.log("isEmpty:",this.state.validateEmpty.isEmpty)
-        console.log("isSubmitted:",this.state.isSubmitted)
-    }
+        const { handleChange } = this.props
+        const { nome, idade, cpf, civil, genero } = this.props
+            
+        const isEmpty =
+            nome.length === 0 ||
+            idade.length === 0 ||
+            cpf.length === 0 ||
+            civil.length === 0 ||
+            genero.length === 0;
+
+        handleChange({ isSubmitted: true, isEmpty})
+        console.log("isEmpty:", isEmpty)
+        console.log("isSubmitted:", this.props.isSubmitted)
+     }
 
     render(){
         return (
@@ -76,35 +72,11 @@ class Form extends React.Component {
                             <label>Outros</label>
                         </div>
                     </div>
-                    <div className="validation">
+                    {/* <div className="validation">
                         {this.state.validateEmpty.isEmpty && this.state.isSubmitted && <p>Preencha todos os campos!</p>}
-                    </div>
+                    </div> */}
                     <input type="submit" value="Cadastrar" id='cadButton'/>
                 </div>
-                <div className="results" style={{display:(!this.state.validateEmpty.isEmpty && this.state.isSubmitted)?"flex":"none"}}>
-                    {(!this.state.validateEmpty.isEmpty && this.state.isSubmitted) && <>
-                        <div className="container">
-                            <p>Nome:</p>
-                            <p>{this.state.nome}</p>
-                        </div>
-                        <div className="container">
-                            <p>Idade:</p>
-                            <p>{this.state.idade}</p>
-                        </div>
-                        <div className="container">
-                            <p>Estado civil:</p>
-                            <p>{this.state.civil}</p>
-                        </div>
-                        <div className="container">
-                            <p>CPF:</p>
-                            <p>{this.state.cpf}</p>
-                        </div>
-                        <div className="container">
-                            <p>Gênero:</p>
-                            <p>{this.state.genero}</p>
-                        </div>
-                    </>}
-                </div>   
             </form>
         )
     }
