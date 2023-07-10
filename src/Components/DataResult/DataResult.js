@@ -1,38 +1,33 @@
-import React from "react";
+import React from 'react'
+import './DataResult.css'
 
-class DataResult extends React.Component {
-    constructor(props){
-        super(props)
-    }
-
-    render(){
-        return(
-            <div className="results" style={{display:(!this.state.validateEmpty.isEmpty && this.state.isSubmitted)?"flex":"none"}}>
-                    {(!this.state.validateEmpty.isEmpty && this.state.isSubmitted) && <>
-                        <div className="container">
-                            <p>Nome:</p>
-                            <p>{this.state.nome}</p>
-                        </div>
-                        <div className="container">
-                            <p>Idade:</p>
-                            <p>{this.state.idade}</p>
-                        </div>
-                        <div className="container">
-                            <p>Estado civil:</p>
-                            <p>{this.state.civil}</p>
-                        </div>
-                        <div className="container">
-                            <p>CPF:</p>
-                            <p>{this.state.cpf}</p>
-                        </div>
-                        <div className="container">
-                            <p>Gênero:</p>
-                            <p>{this.state.genero}</p>
-                        </div>
-                    </>}
-                </div>               
-        )
-    }
+const  DataResult = ({nameData, ageData, civilData, cpfData, genreData, isSubmitted, isEmpty}) => {
+  return (
+    isEmpty && isSubmitted? <p className='error'>Preencha todos os campos!</p> : !isSubmitted? "" : 
+    <div className='results'>
+        <div className='container'>
+            <p>Nome:</p>
+            <p>{nameData}</p>
+        </div>
+        <div className='container'>
+            <p>Idade:</p>
+            <p>{ageData}</p>
+        </div>
+        <div className='container'>
+            <p>Estado Civil:</p>
+            <p>{civilData}</p>
+        </div>
+        <div className='container'>
+            <p>CPF:</p>
+            <p>{cpfData}</p>
+        </div>
+        <div className='container'>
+            <p>Gênero:</p>
+            <p>{genreData}</p>
+        </div>
+    </div>
+    
+  )
 }
 
 export default DataResult

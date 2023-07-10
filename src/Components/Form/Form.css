@@ -12,11 +12,11 @@ label, input, select, p {
     display: flex;
 }
 
-.form, .results {
+.form {
     flex-direction: column;
     border: 1px solid #000;
     padding: 1rem;
-    margin: 5rem auto;
+    margin: 5rem auto 2rem;
     border-radius: 5px;
     background-color: #d6d1c5;
 }
@@ -39,21 +39,11 @@ input, select {
     justify-content: space-between;
 }
 
-.results .container {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-}
-
-.results .container p {
-    margin-right: .5rem;
-}
-
 .name {
     width: 70%;
 }
 
-.idade {
+.age {
     width: 20%;
 }
 
@@ -90,6 +80,10 @@ input, select {
 #cadButton {
     align-self: center;
     border: 1px solid #000;
+    color: #d6d1c5;
+    cursor: pointer;
+    background-color: #333;
+    border-radius: 5px;
 }
 
 @media (max-width: 600px) {
@@ -100,7 +94,7 @@ input, select {
         width: 100%;
     }
 
-    .idade {
+    .age {
         width: 27%;
         margin-right: 1.3rem;
     }
