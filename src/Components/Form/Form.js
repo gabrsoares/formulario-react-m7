@@ -44,7 +44,7 @@ const Form = ({setNameData,
                 setGenreData(value)
                 break
             default:
-                console.error("Erro")
+                alert("Erro")
         }
     }
     const handleSubmit = (event) => {
@@ -63,7 +63,6 @@ const Form = ({setNameData,
         } else {
             setIsEmpty(true)
         }
-        console.log(`isEmpty: ${isEmpty} isSubmitted: ${isSubmitted}`)
     }
 
     return (
